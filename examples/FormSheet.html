@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<style>
+  :root { --ink:#0A1F33; --cy:#1284BE; --cy7:#0B6C9C; --lab:#55636F; --hair:#DDE2E6; --div:#C0C8CE; --write:#95A1AB; --desk:#E9ECEE; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 34px; background: var(--desk); font-family: Archivo, system-ui, sans-serif; color: var(--ink); display: flex; justify-content: center; }
+  .page { position: relative; width: 630px; height: 891px; background: #fff; box-shadow: 0 1px 2px rgba(10,31,51,.12), 0 8px 24px rgba(10,31,51,.08); padding: 50px 54px 108px; }
+  .lab { font: 700 6px/1.2 Archivo, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--lab); }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  .row { display: grid; grid-template-columns: 135px 1fr; }
+  .num { font: 800 46px/.92 Archivo, sans-serif; color: var(--cy); letter-spacing: -.02em; }
+  h1 { font: 800 21px/1.1 Archivo, sans-serif; margin: 6px 0 6px; letter-spacing: -.01em; }
+  .purpose { font-size: 9px; line-height: 1.45; margin-bottom: 12px; }
+  .combrow { display: flex; align-items: flex-end; gap: 10px; }
+  .comb { display: inline-flex; align-items: flex-end; height: 15px; }
+  .comb i { width: 12px; height: 15px; border: 1px solid var(--div); border-top: 0; border-bottom-color: var(--write); }
+  .comb i + i { border-left: 0; }
+  .comb b { width: 8px; text-align: center; font: 400 9px/1 Archivo; color: var(--write); }
+  .sec { margin-top: 12px; border-top: 1.5px solid var(--ink); padding-top: 8px; }
+  .sec .L { font: 800 22px/1 Archivo, sans-serif; color: var(--cy); }
+  .sec .t { font-size: 8.5px; font-weight: 700; margin-top: 4px; }
+  .sec .h { font-size: 6.5px; line-height: 1.4; color: var(--lab); margin-top: 3px; padding-right: 18px; }
+  .fields { display: grid; grid-template-columns: 1fr 14px .55fr; }
+  .f { grid-column: span 1; padding-top: 4px; }
+  .f.full { grid-column: 1 / -1; }
+  .f .w { height: 22px; border-bottom: 1px solid var(--write); }
+  table { width: 100%; border-collapse: collapse; font-size: 8px; }
+  th { font: 700 5.5px/1.2 Archivo; letter-spacing: .14em; text-transform: uppercase; color: var(--lab); text-align: left; padding: 3px 4px 4px 0; border-bottom: .5px solid var(--ink); }
+  th.c, td.c { text-align: center; padding-right: 0; width: 30px; }
+  td { padding: 5px 4px 5px 0; border-bottom: .5px solid var(--hair); height: 21px; }
+  tr:last-child td { border-bottom: 1px solid var(--ink); }
+  .box { display: inline-block; width: 8px; height: 8px; border: 1px solid #16436B; vertical-align: -1px; }
+  .opts { display: flex; gap: 20px; font-size: 8.5px; margin: 4px 0 8px; }
+  .line { height: 20px; border-bottom: 1px solid var(--write); }
+  .sig { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .sig .space { height: 36px; border-bottom: 1px solid var(--write); margin: 4px 0 4px; }
+  .tb { position: absolute; left: 54px; right: 54px; bottom: 26px; }
+  .tb .g { display: grid; grid-template-columns: 1.5fr 3.4fr 2.15fr .85fr 1.15fr .85fr; border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--hair); }
+  .tb .g > div { padding: 5px 6px 6px; border-left: 1px solid var(--div); }
+  .tb .g > div:first-child { border-left: 0; padding-left: 0; display: flex; align-items: center; }
+  .tb .v { font-size: 8px; font-weight: 700; margin-top: 4px; white-space: nowrap; }
+  .tb .v.mono { font-weight: 400; font-size: 7.5px; }
+</style>
+</head>
+<body>
+<section class="page" aria-label="Biểu mẫu">
+  <div class="row">
+    <div class="num">BM<br>02</div>
+    <div>
+      <div class="lab" style="color:var(--cy7)">Biểu mẫu · ban hành kèm theo PCC-IMS-QT-07</div>
+      <h1>Phiếu xem xét tài liệu</h1>
+      <div class="purpose">Dùng khi xem xét dự thảo tài liệu trước khi trình phê duyệt. Một phiếu cho một tài liệu.</div>
+      <div class="combrow">
+        <span class="lab">Số phiếu</span>
+        <span class="comb"><i></i><i></i><i></i><i></i><b>-</b><i></i><i></i><i></i></span>
+        <span class="lab" style="margin-left:auto">Ngày lập</span>
+        <span class="comb"><i></i><i></i><b>/</b><i></i><i></i><b>/</b><i></i><i></i><i></i><i></i></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row sec">
+    <div><div class="L">A</div><div class="t">Thông tin chung</div><div class="h">Viết chữ in hoa nếu điền tay.</div></div>
+    <div class="fields">
+      <div class="f full"><div class="lab">Tên dự án</div><div class="w"></div></div>
+      <div class="f"><div class="lab">Bộ phận / Trung tâm</div><div class="w"></div></div><div></div>
+      <div class="f"><div class="lab">Mã dự án</div><div class="w"></div></div>
+      <div class="f"><div class="lab">Người lập</div><div class="w"></div></div><div></div>
+      <div class="f"><div class="lab">Số tham chiếu (không bắt buộc)</div><div class="w"></div></div>
+    </div>
+  </div>
+
+  <div class="row sec">
+    <div><div class="L">B</div><div class="t">Nội dung kiểm tra</div><div class="h">Đánh dấu một ô mỗi dòng. Chọn Không thì ghi lý do ở phần C.</div></div>
+    <table>
+      <thead><tr><th style="width:22px">Nº</th><th>Nội dung kiểm tra</th><th style="width:70px">Căn cứ</th><th class="c">Đạt</th><th class="c">Không</th><th class="c">N/A</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">01</td><td>Tài liệu có đủ khung tên, mã và lần ban hành</td><td class="mono">QT-07 · 6.2</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr>
+        <tr><td class="mono">02</td><td>Thuật ngữ khớp mục 04 của sổ tay IMS</td><td class="mono">ST-01</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr>
+        <tr><td class="mono">03</td><td>Biểu mẫu viện dẫn đã ban hành</td><td class="mono">QT-07 · 09</td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr>
+        <tr><td class="mono">04</td><td></td><td></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td><td class="c"><span class="box"></span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row sec">
+    <div><div class="L">C</div><div class="t">Kết luận</div></div>
+    <div>
+      <div class="opts"><span><span class="box"></span> Chấp thuận</span><span><span class="box"></span> Chấp thuận có điều kiện</span><span><span class="box"></span> Không chấp thuận</span></div>
+      <div class="lab">Điều kiện, lý do hoặc đề xuất</div>
+      <div class="line"></div><div class="line"></div>
+    </div>
+  </div>
+
+  <div class="row sec">
+    <div><div class="L">D</div><div class="t">Xác nhận</div></div>
+    <div class="sig">
+      <div><div class="lab" style="color:var(--ink)">Người lập</div><div class="space"></div><div class="lab">Ký, ghi rõ họ tên</div></div>
+      <div><div class="lab" style="color:var(--ink)">Người kiểm tra</div><div class="space"></div><div class="lab">Ký, ghi rõ họ tên</div></div>
+      <div><div class="lab" style="color:var(--ink)">Người phê duyệt</div><div class="space"></div><div class="lab">Ký, ghi rõ họ tên</div></div>
+    </div>
+  </div>
+
+  <div class="tb"><div class="g">
+    <div><img src="../assets/logo.svg" alt="" width="52" height="14"></div>
+    <div><div class="lab">Biểu mẫu</div><div class="v">Phiếu xem xét tài liệu</div></div>
+    <div><div class="lab">Mã tài liệu</div><div class="v mono">PCC-IMS-BM-02</div></div>
+    <div><div class="lab">Lần BH</div><div class="v mono">01</div></div>
+    <div><div class="lab">Hiệu lực</div><div class="v mono">15/10/2026</div></div>
+    <div><div class="lab">Tờ</div><div class="v mono">1 / 1</div></div>
+  </div></div>
+</section>
+</body>
+</html>

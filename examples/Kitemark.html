@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<style>
+  :root { --ink:#0A1F33; --lab:#55636F; --hair:#DDE2E6; --cy:#1284BE; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px; background: #fff; font-family: Archivo, system-ui, sans-serif; color: var(--ink); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1050px; }
+  .panel { padding: 36px 32px 28px; border: 1px solid var(--hair); min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; }
+  .panel.dark { background: #0A1F33; border-color: #0A1F33; }
+  .pair { display: flex; align-items: flex-end; gap: 72px; }
+  .pc { height: 46px; width: auto; display: block; }
+  .km { display: flex; flex-direction: column; align-items: flex-start; }
+  .km img { height: 72px; width: auto; display: block; }
+  .cert { font-family: Tahoma, Verdana, sans-serif; font-size: 11px; margin-top: 6px; color: #000; letter-spacing: 0; }
+  .dark .cert { color: #fff; }
+  .lab { font: 700 10px/1.3 Archivo, sans-serif; letter-spacing: .14em; text-transform: uppercase; color: var(--lab); margin-top: 28px; }
+  .dark .lab { color: #AFC2D1; }
+  .rules { max-width: 1050px; margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-top: 1px solid var(--ink); padding-top: 12px; }
+  .rules div { font-size: 12.5px; line-height: 1.45; }
+  .rules b { display: block; font: 700 10px/1.3 Archivo; letter-spacing: .14em; text-transform: uppercase; color: var(--cy); margin-bottom: 4px; }
+  @media (max-width: 760px) { .grid, .rules { grid-template-columns: 1fr; } .pair { gap: 32px; flex-wrap: wrap; } }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <section class="panel" aria-label="Nền sáng">
+      <div class="pair">
+        <img class="pc" src="../assets/logo.svg" alt="Portcoast">
+        <div class="km">
+          <img src="../assets/kitemark/kitemark-bim-multi-scheme-black.png" alt="BSI Kitemark BIM Design and Construction, BIM Security">
+          <span class="cert">KM 824632</span>
+        </div>
+      </div>
+      <div class="lab">Nền trắng hoặc giấy · dấu đen · số chứng chỉ Tahoma</div>
+    </section>
+    <section class="panel dark" aria-label="Nền tối">
+      <div class="pair">
+        <img class="pc" src="../assets/logo-white.svg" alt="Portcoast">
+        <div class="km">
+          <img src="../assets/kitemark/kitemark-bim-multi-scheme-white.png" alt="BSI Kitemark BIM Design and Construction, BIM Security">
+          <span class="cert">KM 824632</span>
+        </div>
+      </div>
+      <div class="lab">Nền navy hoặc ảnh · dấu trắng</div>
+    </section>
+  </div>
+  <div class="rules">
+    <div><b>Màu</b>Chỉ đen hoặc trắng. Không đổi sang màu Portcoast.</div>
+    <div><b>Cỡ và vùng trống</b>Cao tối thiểu 9 mm; trống 10 % mỗi phía.</div>
+    <div><b>Tách biệt</b>Không ghép với logo Portcoast thành một khối hay một khung.</div>
+    <div><b>Phạm vi</b>Chỉ tài liệu BIM. Không trên quy trình IMS, CV cá nhân.</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<style>
+  /* 1 mm = 3 px. A4 = 630 × 891. Lề 18 / 19 / 18 / 35 mm. Cột lề 45 mm, thân 129 mm. */
+  :root { --ink:#0A1F33; --cy:#1284BE; --cy7:#0B6C9C; --cy5:#1899D6; --cy1:#E3F2FA; --lab:#55636F; --mute:#55636F; --hair:#DDE2E6; --div:#C0C8CE; --desk:#E9ECEE; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px; background: var(--desk); font-family: Archivo, system-ui, sans-serif; color: var(--ink); }
+  .spread { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .page { position: relative; width: 630px; height: 891px; background: #fff; box-shadow: 0 1px 2px rgba(10,31,51,.12), 0 8px 24px rgba(10,31,51,.08); padding: 57px 54px 105px; overflow: hidden; }
+  .cap { text-align: center; font: 500 11px/1 "IBM Plex Mono", monospace; color: var(--lab); margin-top: 12px; }
+  .lab { font: 700 6.5px/1.2 Archivo, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--lab); }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  .fi { color: var(--cy7); text-decoration: underline dotted var(--cy5); text-underline-offset: 2px; }
+  .row { display: grid; grid-template-columns: 135px 1fr; }
+  /* running head */
+  .rh { position: absolute; top: 30px; left: 54px; right: 54px; display: flex; justify-content: space-between; font-size: 7px; color: var(--lab); }
+  /* title block */
+  .tb { position: absolute; left: 54px; right: 54px; bottom: 26px; }
+  .tb .g { display: grid; grid-template-columns: 1.5fr 3.4fr 2.15fr .85fr 1.15fr .85fr; border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--hair); }
+  .tb .g > div { padding: 5px 6px 6px; border-left: 1px solid var(--div); min-width: 0; }
+  .tb .g > div:first-child { border-left: 0; padding-left: 0; display: flex; align-items: center; }
+  .tb .v { font-size: 8px; font-weight: 700; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tb .v.mono { font-weight: 400; font-size: 7.5px; }
+  .tb .u { display: flex; justify-content: space-between; font-size: 5.5px; color: var(--lab); margin-top: 4px; }
+  /* cover */
+  .logo { width: 128px; display: block; margin-bottom: 150px; }
+  .num { font: 800 64px/.92 Archivo, sans-serif; color: var(--cy); letter-spacing: -.02em; }
+  .num .fi { text-decoration-thickness: 2px; }
+  .cover h1 { font: 800 30px/1.08 Archivo, sans-serif; letter-spacing: -.015em; margin: 10px 0 14px; }
+  .purpose { font-size: 11px; line-height: 1.5; max-width: 40ch; }
+  .facts { margin-top: 64px; }
+  .facts .cells { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--hair); }
+  .facts .cells > div { padding: 8px 10px 9px 0; }
+  .facts .val { font-size: 9.5px; margin-top: 5px; }
+  .sign { margin-top: 48px; }
+  .sign .cells { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 18px; }
+  .sign .cells > div { border-top: .75px solid var(--ink); padding-top: 8px; }
+  .sign .space { height: 58px; border-bottom: 1px solid #95A1AB; margin: 6px 0 6px; }
+  .sign .val { font-size: 8.5px; margin: 3px 0 7px; }
+  /* content */
+  h2 { margin: 0; display: grid; grid-template-columns: 135px 1fr; border-top: 1px solid var(--ink); padding-top: 8px; font: 800 15px/1.2 Archivo, sans-serif; }
+  h2 .n { color: var(--cy); }
+  h3 { margin: 14px 0 6px; display: grid; grid-template-columns: 135px 1fr; font: 700 10.5px/1.3 Archivo, sans-serif; }
+  h3 .n { font: 400 8.5px/1.6 "IBM Plex Mono", monospace; color: var(--lab); }
+  p { margin: 0 0 7px; font-size: 9.5px; line-height: 1.45; }
+  .rail-note { font-size: 7px; line-height: 1.4; color: var(--lab); padding-right: 16px; }
+  .rail-note b { font: 500 7px/1.4 "IBM Plex Mono", monospace; color: var(--cy7); }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5px; margin: 4px 0 12px; }
+  th { text-align: left; font: 700 6px/1.2 Archivo, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: var(--lab); padding: 6px 8px 5px 0; border-top: 1px solid var(--ink); border-bottom: .5px solid var(--ink); }
+  td { padding: 5px 8px 5px 0; border-bottom: .5px solid var(--hair); vertical-align: top; line-height: 1.35; }
+  tr:last-child td { border-bottom: 1px solid var(--ink); }
+  td.mono { font-size: 7.8px; }
+  .gap { height: 18px; }
+  @media (max-width: 760px) { body { padding: 12px; } .page { transform-origin: top left; } }
+</style>
+</head>
+<body>
+<div class="spread">
+  <div>
+    <section class="page cover" aria-label="Bìa">
+      <img class="logo" src="../assets/logo.svg" alt="Portcoast">
+      <div class="row">
+        <div class="num">QT<br><span class="fi">07</span></div>
+        <div>
+          <div class="lab" style="color:var(--cy7)">Hệ thống quản lý tích hợp · Quy trình</div>
+          <h1>Kiểm soát thông tin dạng văn bản</h1>
+          <div class="purpose">Quy định cách lập, xem xét, phê duyệt, ban hành và lưu trữ tài liệu của hệ thống quản lý tích hợp.</div>
+        </div>
+      </div>
+      <div class="row facts">
+        <div class="lab" style="padding-top:10px">Thông tin tài liệu</div>
+        <div class="cells">
+          <div><div class="lab">Mã tài liệu</div><div class="val mono">PCC-IMS-QT-07</div></div>
+          <div><div class="lab">Lần ban hành</div><div class="val mono">02</div></div>
+          <div><div class="lab">Ngày hiệu lực</div><div class="val">15/10/2026</div></div>
+          <div><div class="lab">Đơn vị chủ trì</div><div class="val">Ban ISO</div></div>
+        </div>
+      </div>
+      <div class="row sign">
+        <div class="lab" style="padding-top:10px">Phê duyệt</div>
+        <div class="cells">
+          <div><div class="lab" style="color:var(--ink)">Biên soạn</div><div class="space"></div><div class="lab">Họ và tên</div><div class="val">Trần Minh Khoa</div><div class="lab">Ngày</div><div class="val">02/10/2026</div></div>
+          <div><div class="lab" style="color:var(--ink)">Xem xét</div><div class="space"></div><div class="lab">Họ và tên</div><div class="val">Lê Thu Hà</div><div class="lab">Ngày</div><div class="val">08/10/2026</div></div>
+          <div><div class="lab" style="color:var(--ink)">Phê duyệt</div><div class="space"></div><div class="lab">Họ và tên</div><div class="val">Phạm Quốc Bảo</div><div class="lab">Ngày</div><div class="val">12/10/2026</div></div>
+        </div>
+      </div>
+      <div class="tb"><div class="g">
+        <div><img src="../assets/logo.svg" alt="" width="52" height="14"></div>
+        <div><div class="lab">Quy trình</div><div class="v">Kiểm soát thông tin dạng văn bản</div></div>
+        <div><div class="lab">Mã tài liệu</div><div class="v mono">PCC-IMS-QT-07</div></div>
+        <div><div class="lab">Lần BH</div><div class="v mono">02</div></div>
+        <div><div class="lab">Hiệu lực</div><div class="v mono">15/10/2026</div></div>
+        <div><div class="lab">Tờ</div><div class="v mono">1 / 9</div></div>
+      </div><div class="u"><span>Portcoast Consultant Corporation · IMS ISO 9001 · 14001 · 45001</span><span>Bản in không được kiểm soát.</span></div></div>
+    </section>
+    <div class="cap">Bìa: số loại tài liệu trong cột lề, hàng thông tin, khối phê duyệt</div>
+  </div>
+
+  <div>
+    <section class="page" aria-label="Trang nội dung">
+      <div class="rh"><span class="mono">PCC-IMS-QT-07</span><span>Hồ sơ lưu</span></div>
+      <h2><span class="n">07</span><span>Theo dõi và kiểm soát</span></h2>
+      <div class="row" style="margin-top:12px">
+        <div class="rail-note"><b>ISO 9001:2015 · 9.1</b><br>Theo dõi, đo lường, phân tích và đánh giá</div>
+        <p>Kết quả theo dõi được báo cáo trong cuộc họp xem xét của lãnh đạo hằng quý; rủi ro được cập nhật mỗi khi quy trình thay đổi.</p>
+      </div>
+      <h3><span class="n">07.1</span><span>Chỉ số đo lường</span></h3>
+      <div class="row"><div></div>
+        <table><thead><tr><th>Chỉ số</th><th>Mục tiêu</th><th>Tần suất</th><th>Theo dõi</th></tr></thead>
+        <tbody><tr><td>Tài liệu ban hành đúng hạn</td><td class="mono">≥ 95 %</td><td>Hằng quý</td><td>Ban ISO</td></tr>
+        <tr><td>Bản hết hiệu lực còn trên CDE</td><td class="mono">0</td><td>Hằng tháng</td><td>Quản lý CDE</td></tr></tbody></table>
+      </div>
+      <h3><span class="n">07.2</span><span>Rủi ro và biện pháp kiểm soát</span></h3>
+      <div class="row"><div></div>
+        <table><thead><tr><th>Rủi ro</th><th>Biện pháp</th><th>Bước</th></tr></thead>
+        <tbody><tr><td>Dùng nhầm bản đã hết hiệu lực</td><td>Chỉ phát hành trên CDE; bản in đóng dấu kiểm soát</td><td class="mono">B4</td></tr></tbody></table>
+      </div>
+      <div class="gap"></div>
+      <h2><span class="n">08</span><span>Hồ sơ lưu</span></h2>
+      <div class="row" style="margin-top:12px">
+        <div class="rail-note"><b>ISO 9001:2015 · 7.5.3</b><br>Kiểm soát thông tin dạng văn bản</div>
+        <div>
+          <p>Hồ sơ lưu ở trạng thái đã phát hành trên CDE; bản giấy có chữ ký lưu tại bộ phận trong thời hạn dưới đây.</p>
+          <table><thead><tr><th>Hồ sơ</th><th>Biểu mẫu</th><th>Nơi lưu</th><th>Thời hạn</th></tr></thead>
+          <tbody><tr><td>Phiếu đề nghị</td><td class="mono">BM-01</td><td class="mono">CDE/IMS/01</td><td>05 năm</td></tr>
+          <tr><td>Phiếu xem xét</td><td class="mono">BM-02</td><td class="mono">CDE/IMS/02</td><td>05 năm</td></tr></tbody></table>
+        </div>
+      </div>
+      <div class="tb"><div class="g">
+        <div><img src="../assets/logo.svg" alt="" width="52" height="14"></div>
+        <div><div class="lab">Quy trình</div><div class="v">Kiểm soát thông tin dạng văn bản</div></div>
+        <div><div class="lab">Mã tài liệu</div><div class="v mono">PCC-IMS-QT-07</div></div>
+        <div><div class="lab">Lần BH</div><div class="v mono">02</div></div>
+        <div><div class="lab">Hiệu lực</div><div class="v mono">15/10/2026</div></div>
+        <div><div class="lab">Tờ</div><div class="v mono">7 / 9</div></div>
+      </div><div class="u"><span>Portcoast Consultant Corporation · IMS ISO 9001 · 14001 · 45001</span><span>Bản in không được kiểm soát.</span></div></div>
+    </section>
+    <div class="cap">Nội dung: số mục trong cột lề, ghi chú điều khoản, bảng booktabs</div>
+  </div>
+</div>
+</body>
+</html>
